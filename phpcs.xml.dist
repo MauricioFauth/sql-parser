@@ -7,28 +7,46 @@
     <arg name="colors"/>
     <arg name="extensions" value="php"/>
 
+    <!-- Make sniff report relative -->
+    <arg name="basepath" value="."/>
+
     <file>src</file>
     <file>tests</file>
     <file>tools</file>
 
     <exclude-pattern>tools/doctum-config.php</exclude-pattern>
 
-    <rule ref="PhpMyAdmin">
-        <exclude name="SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint"/>
-        <exclude name="SlevomatCodingStandard.TypeHints.ReturnTypeHint.MissingNativeTypeHint"/>
-        <exclude name="Squiz.NamingConventions.ValidVariableName.MemberNotCamelCaps"/>
-    </rule>
+    <rule ref="PhpMyAdmin"/>
 
     <rule ref="Generic.Files.LineLength.TooLong">
         <exclude-pattern>src/Contexts/*</exclude-pattern>
     </rule>
 
-    <rule ref="SlevomatCodingStandard.ControlStructures.RequireSingleLineCondition"/>
-    <rule ref="SlevomatCodingStandard.Functions.RequireSingleLineCall"/>
-    <rule ref="SlevomatCodingStandard.Whitespaces.DuplicateSpaces">
-        <properties>
-            <property name="ignoreSpacesInComment" value="true"/>
-        </properties>
+    <rule ref="SlevomatCodingStandard.Classes.ParentCallSpacing.IncorrectLinesCountAfterControlStructure">
+        <exclude-pattern>src/Exceptions/LexerException.php</exclude-pattern>
+        <exclude-pattern>src/Exceptions/LoaderException.php</exclude-pattern>
+        <exclude-pattern>src/Exceptions/ParserException.php</exclude-pattern>
+        <exclude-pattern>tests/Lexer/TokensListTest.php</exclude-pattern>
+    </rule>
+    <rule ref="SlevomatCodingStandard.Classes.ParentCallSpacing.IncorrectLinesCountBeforeControlStructure">
+        <exclude-pattern>src/Lexer.php</exclude-pattern>
+        <exclude-pattern>src/Parser.php</exclude-pattern>
+    </rule>
+    <rule ref="SlevomatCodingStandard.Classes.PropertySpacing.IncorrectCountOfBlankLinesAfterProperty">
+        <exclude-pattern>src/Lexer.php</exclude-pattern>
+    </rule>
+    <rule ref="SlevomatCodingStandard.Commenting.AnnotationName.AnnotationNameIncorrect">
+        <exclude-pattern>src/Statements/KillStatement.php</exclude-pattern>
+        <exclude-pattern>src/Statements/WithStatement.php</exclude-pattern>
+    </rule>
+    <rule ref="SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint">
+        <exclude-pattern>src/*</exclude-pattern>
+    </rule>
+    <rule ref="SlevomatCodingStandard.TypeHints.ReturnTypeHint.MissingNativeTypeHint">
+        <exclude-pattern>src/*</exclude-pattern>
+    </rule>
+    <rule ref="Squiz.NamingConventions.ValidVariableName.MemberNotCamelCaps">
+        <exclude-pattern>src/*</exclude-pattern>
     </rule>
 
     <rule ref="Squiz.Arrays.ArrayDeclaration.IndexNoNewline">
@@ -45,5 +63,15 @@
         <exclude-pattern>src/UtfString.php</exclude-pattern>
         <exclude-pattern>src/Components/Expression.php</exclude-pattern>
         <exclude-pattern>src/Statement.php</exclude-pattern>
+    </rule>
+
+    <rule ref="SlevomatCodingStandard.Commenting.RequireOneLineDocComment.MultiLineDocComment">
+        <severity>4</severity>
+    </rule>
+    <rule ref="SlevomatCodingStandard.PHP.RequireNowdoc.RequiredNowdoc">
+        <severity>4</severity>
+    </rule>
+    <rule ref="SlevomatCodingStandard.Commenting.InlineDocCommentDeclaration.InvalidFormat">
+        <severity>4</severity>
     </rule>
 </ruleset>
