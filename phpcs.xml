@@ -22,16 +22,13 @@
         <exclude-pattern>src/Contexts/*</exclude-pattern>
     </rule>
 
-    <rule ref="SlevomatCodingStandard.ControlStructures.RequireSingleLineCondition"/>
-    <rule ref="SlevomatCodingStandard.Functions.RequireSingleLineCall"/>
-    <rule ref="SlevomatCodingStandard.Whitespaces.DuplicateSpaces">
-        <properties>
-            <property name="ignoreSpacesInComment" value="true"/>
-        </properties>
-    </rule>
-
     <rule ref="Squiz.Arrays.ArrayDeclaration.IndexNoNewline">
         <exclude-pattern>src/Contexts/*</exclude-pattern>
         <exclude-pattern>tests/Tools/templates/*</exclude-pattern>
+    </rule>
+
+    <!-- Rules that should be followed, but are not required -->
+    <rule ref="SlevomatCodingStandard.PHP.RequireExplicitAssertion">
+        <severity>4</severity>
     </rule>
 </ruleset>
